@@ -1,8 +1,15 @@
 const express = require('express');
-
+const fs = require('fs');
 const app = express();
 
-app.get('/info',  (req, res) => {
+app.post('/infoAgent',  (req, res) => {
+  fs.writeFile('./infoAgent.json', JSON.stringify(req),(err) => {
+    if (err) {
+      console.log(err);
+      return;
+    };
+  //console.log("file created");
+  });
   res.send('Hello World!');
 });
 
